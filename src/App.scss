@@ -1,0 +1,16 @@
+.switchWrapper {
+    position: relative;
+
+    // @keyframes slideInn {
+    //     0% { transform: translateY(200px); }
+    //     70% {transform: translateY(0);}
+    //   }
+  
+    > :first-child ~ * {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      // animation: slideInn 1s ;
+    }
+  }
