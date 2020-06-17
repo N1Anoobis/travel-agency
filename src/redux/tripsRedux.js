@@ -20,12 +20,16 @@ export const getFilteredTrips = ({trips, filters}) => {
     
   // TODO - filter by tags
   if(filters.tags){
-    console.log(filters.tags);
     filters.tags.forEach(tag => {
       output = output.filter(trip => trip.tags.find(tripTag => tripTag === tag));
     });
   }
   // TODO - sort by cost descending (most expensive goes first)
+  // output.sort((pierwszyElement, drugiElement) => {
+  //   return decyzja_co_wieksze
+  //   })
+
+
 
   return output;
 };
