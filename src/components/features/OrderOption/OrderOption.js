@@ -5,14 +5,17 @@ import OrderOptionDropdown from './OrderOptionDropdown';
 import OrderOptionCheckboxes from './OrderOptionCheckboxes';
 import OrderOptionNumber from './OrderOptionNumber';
 import OrderOptionIcons from './OrderOptionIcons';
+import OrderOptionText from './OrderOptionText';
+import OrderOptionDate from './OrderOptionDate';
 
 const optionTypes = {
   dropdown: OrderOptionDropdown,
   icons: OrderOptionIcons,
   checkboxes: OrderOptionCheckboxes,
   number: OrderOptionNumber,
+  text: OrderOptionText,
+  date: OrderOptionDate,
 };
-
 
 const OrderOption = ({name, type, id, setOrderOption, ...otherProps}) => {
     
@@ -30,9 +33,5 @@ const OrderOption = ({name, type, id, setOrderOption, ...otherProps}) => {
     );
   }
 };
-
-// OrderOption.propTypes = {
-//   id: PropTypes.string,
-// };
 
 export default OrderOption;

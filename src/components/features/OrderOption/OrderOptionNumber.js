@@ -8,8 +8,8 @@ function OrderOptionNumber({currentValue, limits,setOptionValue,  price}) {
     <div className={styles.number}>
       <input className={styles.inputSmall} type='number' value={currentValue}
         onChange={event => setOptionValue(event.currentTarget.value)} min={limits.min} max={limits.max}
-      />
-      {price}
+      /> {price}
+      
     </div>
   );
 }
