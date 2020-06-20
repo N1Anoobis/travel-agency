@@ -28,10 +28,10 @@ const OrderOptionIcons = ({values, required, currentValue, setOptionValue}) => (
 );
 
 OrderOptionIcons.propTypes = {
-  values: PropTypes.any,
+  values: PropTypes.array,
   required: PropTypes.bool,
-  currentValue: PropTypes.any,
-  setOptionValue: PropTypes.any,
+  currentValue: PropTypes.string,
+  setOptionValue: PropTypes.func,
 };
 
 export default OrderOptionIcons;

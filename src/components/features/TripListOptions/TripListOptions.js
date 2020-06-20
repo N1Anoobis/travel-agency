@@ -7,18 +7,18 @@ import {Row, Col} from 'react-flexbox-grid';
 class TripListOptions extends React.Component {
   handleTags(tag, checked){
     if(checked) {
-      console.log('Adding tag', tag);
+      // console.log('Adding tag', tag);
       // TODO - use action dispatcher from props
       this.props.addingTag(tag);
     } else {
-      console.log('Removing tag', tag);
+      // console.log('Removing tag', tag);
       // TODO - use action dispatcher from props
       this.props.removingTag(tag);
     }
   }
 
   handleDuration(type, value){
-    console.log('Changing duration', type, value);
+    // console.log('Changing duration', type, value);
     // TODO - use action dispatcher from props
     this.props.changeDurationData(type, value);
   }
@@ -27,8 +27,14 @@ class TripListOptions extends React.Component {
     this.props.changeSearchPhrase(phrase);
   }
 
+  handleRegions(region){
+    this.props.selectRegion(region);
+    console.log(region);
+  }
+
   render(){
-    const {tags, filters} = this.props;
+    const {tags, filters, regions} = this.props;
+    // console.log('regions', regions);
     return (
       <div className={styles.component}>
         <Row around="lg">
@@ -66,6 +72,26 @@ class TripListOptions extends React.Component {
               </details>
             </div>
           </Col>
+
+          <Col lg={4}>
+            <div className={styles.filter}>
+              <details>
+                <summary className={styles.toggle}>Filter by regions</summary>
+                <div className={styles.dropdown}>
+                  
+                  <select  key={regions} onClick={event => this.handleRegions( event.target.value)} >
+                    {Object.keys(regions).map(region => ( <option value={region}  key={region} className={styles.option}
+                      
+                      options={region}>
+                      {region}
+                    </option>  ))}
+                  </select>
+                
+                </div>
+              </details>
+            </div>
+          </Col>
+
         </Row>
       </div>
     );
@@ -79,6 +105,8 @@ TripListOptions.propTypes = {
   changeDurationData: PropTypes.func,
   addingTag: PropTypes.func,
   removingTag: PropTypes.func,
+  regions: PropTypes.object,
+  selectRegion: PropTypes.func,
 };
 
 export default TripListOptions;

@@ -29,7 +29,6 @@ const Regions = ({regions, subregions, countries}) => (
       ))}
     </Grid>
   </Section>
-
 );
 
 Regions.propTypes = {

@@ -11,6 +11,7 @@ class OrderOptionDate extends React.Component {
  
   render() {
     const {currentValue, setOptionValue} = this.props;
+    console.log(typeof currentValue);
     return (
       <DatePicker 
         className={styles.input}

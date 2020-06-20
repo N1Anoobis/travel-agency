@@ -13,6 +13,7 @@ const initialState = {
   tags: {},
   filters: {
     searchPhrase: '',
+    region: '',
     tags: [],
     duration: {
       from: 1,
