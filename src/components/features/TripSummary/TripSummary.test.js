@@ -7,7 +7,6 @@ describe('Component TripSummary', () => {
   it('should show if correct value is passed through props to link', () => {
     const idValue = 'abc';
     const component = shallow(<TripSummary id={idValue} tags={['a','b','c']}/>);
-
     expect(component.find('Link').prop('to')).toEqual(`/trip/${idValue}`);
   });
  
@@ -21,9 +20,15 @@ describe('Component TripSummary', () => {
   });
   
   it('should render props', () => {
-    const component = shallow(<TripSummary name={'name'} cost={'name'} days={6} tags={['a','b','c']}/>);
-    expect(component).toBeTruthy();
-    console.log(component.debug());
+    const expectedName = 'name';
+    const expectedCost = 'cost';
+    const expactedDays = 1;
+
+    const component = shallow(<TripSummary name={expectedName} cost={expectedCost} days={expactedDays} tags={['a','b','c']}/>);
+    // expect(component).toBeTruthy();
+    expect(component.find('.title').text()).toEqual(expectedName); 
+    expect(component.find('span').at(1).text()).toEqual(`from ${expectedCost}`);
+    expect(component.find('span').at(0).text()).toEqual(`${expactedDays} days`); 
   });
 
   it('should throw error without required props', () => {
