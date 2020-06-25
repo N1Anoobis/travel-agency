@@ -3,7 +3,6 @@ import styles from './OrderOption.scss';
 import PropTypes from 'prop-types';
 
 function OrderOptionNumber({currentValue, limits,setOptionValue,  price}) {
-  console.log(typeof currentValue);
   return(
     <div className={styles.number}>
       <input className={styles.inputSmall} type='number' value={currentValue}
