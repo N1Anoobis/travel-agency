@@ -12,13 +12,18 @@ import  {formatPrice} from '../../../utils/formatPrice';
 
 const sendOrder = (options, tripCost, name, country,id) => {
   const totalCost = formatPrice(calculateTotal(tripCost, options));
-  console.log('country name', country.name);
-  console.log('country coe', country.alpha2Code);
-  console.log('name', name);
-  console.log('id', id);
+  const countryName = country.name;
+  const countryCode = country.alpha2Code;
+  const tripName = name;
+  const tripId = id;
+  
   const payload = {
     ...options,
     totalCost,
+    tripName,
+    countryName,
+    countryCode,
+    tripId,
   };
 
   const url = settings.db.url + '/' + settings.db.endpoint.orders;
@@ -41,7 +46,7 @@ const sendOrder = (options, tripCost, name, country,id) => {
 };
 
 const OrderForm = ({ options, tripCost, setOrderOption, days, name, country, id }) => (
-  
+ 
   <Row>
     {pricing.map( option => <Col md={4} key={option.id}>
       <OrderOption {...option} currentValue={options[option.id]} setOrderOption={setOrderOption}/>
@@ -49,7 +54,8 @@ const OrderForm = ({ options, tripCost, setOrderOption, days, name, country, id 
     <Col xs={12}>
       <OrderSummary options={options} cost={tripCost} days={days}/>
     </Col>
-    <Button onClick={() => sendOrder(options, tripCost, name, country,id)}>Order now!</Button>
+    <Button onClick={ options.name.length  <= 2 || options.contact.length  <=  5? null : () => sendOrder(options, tripCost, name, country,id)}>Order now!</Button>
+    {(options.name.length  <= 2 || options.contact.length  <= 5) ? `Please enter minimum 3 digits name and 6 digits contact` :''}
   </Row>
 );
 
