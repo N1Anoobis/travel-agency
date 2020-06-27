@@ -149,6 +149,10 @@ for(let type in optionTypes){
         it('contains input ', () => {
           const number = renderedSubcomponent.find('input');
           expect(number.length).toBe(1); 
+          expect(number.prop('type')).toBe('number');
+          expect(number.prop('min')).toBe(mockProps.limits.min);
+          expect(number.prop('max')).toBe(mockProps.limits.max);
+          expect(number.prop('value')).toBe(1);
         });
         it('should run setOrderOption function on change', () => {
           renderedSubcomponent.find('input').simulate('change', {currentTarget: {value: testValueNumber}});
@@ -162,6 +166,8 @@ for(let type in optionTypes){
         it('contains input', () => {
           const text = renderedSubcomponent.find('input');
           expect(text.length).toBe(1);
+          expect(text.prop('type')).toBe('text'); 
+          expect(text.prop('value')).toBe(mockProps.values[0].id);
         });
         it('should run setOrderOption function on change', () => {
           renderedSubcomponent.find('input').simulate('change', {currentTarget: {value: testValue}});
