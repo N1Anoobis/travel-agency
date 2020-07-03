@@ -10,8 +10,6 @@ class HappyHourAd extends Component {
     setInterval(()=>{ 
       this.forceUpdate(); }, 1000);
 
-    this.state = {
-    };
   }
 
   static propTypes = {

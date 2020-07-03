@@ -2,6 +2,7 @@ import React from 'react';
 import styles from './Hero.scss';
 import PropTypes from 'prop-types';
 import HappyHourAd from '../../features/HappyHourAd/HappyHourAd';
+import DaysToSummer from '../../features/daysToSummer/DaysToSummer';
 
 const Hero = ({variant = '', titleText, imageSrc, ...otherProps}) => (
   <div {...otherProps} className={styles.component + variant.split(' ').map(name => ' ' + (styles[name] || name)).join('')}>
@@ -9,6 +10,7 @@ const Hero = ({variant = '', titleText, imageSrc, ...otherProps}) => (
     <img className={styles.image}  src={imageSrc} />
     <div className={styles.happyHour}>
       <HappyHourAd title='Happy Hour' description="It's your time! Take advantage of Happy Hour! All offers 20% off!"/>
+      <DaysToSummer />
     </div>
   </div>
 );
