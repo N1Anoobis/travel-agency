@@ -8,8 +8,8 @@ class HappyHourAd extends Component {
     super(props);
 
     setInterval(()=>{ 
-      this.forceUpdate(); }, 1000);
-
+      this.forceUpdate(); 
+    }, 1000);
   }
 
   static propTypes = {
