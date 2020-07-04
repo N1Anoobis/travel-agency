@@ -15,10 +15,6 @@ describe('Component daysToSummer', () => {
     const component = shallow(<DaysToSummer  />);
     expect(component).toBeTruthy();
   });
-  it('should render heading', () => {
-    const component = shallow(<DaysToSummer />);
-    expect(component.exists(select.countDown)).toEqual(true);
-  });
 });
 
 const trueDate = Date;
@@ -44,6 +40,12 @@ const checkDescriptionAtTime = (time, expectedDescription) => {
     const renderedTime = component.find(select.countDown).text();
     expect(renderedTime).toEqual(expectedDescription);
   
+    global.Date = trueDate;
+  });
+  it('should render heading', () => {
+    global.Date = mockDate(`${time}T00:00:00.135Z`);
+    const component = shallow(<DaysToSummer />);
+    expect(component.exists(select.countDown)).toEqual(true);
     global.Date = trueDate;
   });
 };
